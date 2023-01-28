@@ -1,0 +1,38 @@
+"use strict";
+exports.__esModule = true;
+var book_1 = require("./abstraction/refined/book");
+var paper_1 = require("./abstraction/refined/paper");
+var formatter_factory_1 = require("./factory/formatter-factory");
+var formatter_type_1 = require("./factory/formatter-type");
+var brochure_1 = require("./abstraction/refined/brochure");
+var thesis_1 = require("./abstraction/refined/thesis");
+function clientCode() {
+    var fomatterBrochure = formatter_factory_1.FormatterFactory.getType(formatter_type_1.FormatterType.BACKWARDS);
+    var brochure = new brochure_1.Brochure(fomatterBrochure);
+    brochure.changeText("Text of the brochure");
+    brochure.print();
+    console.log("*************************************************************");
+    var fomatterThesis = formatter_factory_1.FormatterFactory.getType(formatter_type_1.FormatterType.BACKWARDS);
+    var thesis = new thesis_1.Thesis(fomatterThesis);
+    thesis.changeAuthor("Juan Pérez");
+    thesis.changeTitle("Design Patterns");
+    thesis.changeText("Text of the thesis");
+    thesis.changeReferences("References of the thesis");
+    thesis.print();
+    console.log("*************************************************************");
+    var fomatterBook = formatter_factory_1.FormatterFactory.getType(formatter_type_1.FormatterType.BACKWARDS);
+    var book = new book_1.Book(fomatterBook);
+    book.changeAuthor("Robert C. Martin");
+    book.changeTitle("Clean Code");
+    book.changeText("Text of the book");
+    book.print();
+    console.log("*************************************************************");
+    var fomatterPaper = formatter_factory_1.FormatterFactory.getType(formatter_type_1.FormatterType.IEEE);
+    var paper = new paper_1.Paper(fomatterPaper);
+    paper.changeAuthor("Juan Pérez");
+    paper.changeTitle("Design Patterns");
+    paper.changeText("Text of the paper");
+    paper.changeReferences("References of the paper");
+    paper.print();
+}
+clientCode();
